@@ -23,9 +23,15 @@
         </div>
         <div class ="num_spots_selected" id="numSpotsSelected">
             <!-- populated through script-->
+             0 Spots Selected
         </div>
         <script>
             const buttonContainer = document.getElementById('buttonContainer');
+            const numSpotsSelected = document.getElementById('numSpotsSelected');
+
+
+            let selectedNumbers = [];
+            let spots = 0;
             
             for (let i = 1; i <= 80; i++){
                 const button = document.createElement('button');
@@ -33,15 +39,20 @@
                 button.className = 'keno-button';
                 button.onclick = function () {
                     alert("You clicked number " + i);
+                    if (selectedNumbers.includes(i)) {
+                        selectedNumbers = selectedNumbers.filter(num => num !== i);
+                        spots--;
+                        button.classList.remove('selected');
+                    } else {
+                        selectedNumbers.push(i);
+                        spots++;
+                        button.classList.add('selected');
+                    }
+                    numSpotsSelected.textContent = `${ spots } Spots Selected`;
                 };
+                console.log(numSpotsSelected);
                 buttonContainer.appendChild(button);
             }
-
-            const numSpotsSelected = document.getElementById('numSpotsSelected');
-
-            let spots = 0;
-            numSpotsSelected.textContent = `${ spots } Spots Selected`;
-
         </script>
 
     </body>
