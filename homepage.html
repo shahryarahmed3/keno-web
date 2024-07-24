@@ -4,13 +4,26 @@
     <head>
         <title>Keno</title>
         <style>
-            body{
+            body {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
                 margin: 0px;
                 font-family: 'Roboto', sans-serif;
+            }
 
+            .main-container {
+                display: flex;
+            }
+
+            .right-container {
+                margin-left: 24px;
+                display: flex; 
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+            .left-container {
+                margin-right: 24px;
             }
 
             .logo-container {
@@ -77,7 +90,12 @@
             .keno-button.selected{
                 /* background-color: yellow; */
                 border-radius: 50%;
-                background: radial-gradient(circle at 100px 100px, rgb(255, 255, 255), #ffee00);
+                background: radial-gradient(circle at 100px 100px, rgb(63, 63, 63), #ffee00);
+
+            }
+            
+            .keno-button:hover{
+                background: radial-gradient(circle at 100px 100px, rgb(209, 209, 209), #de1300);
 
             }
 
@@ -100,22 +118,35 @@
         <div class="logo-container">
             <h1>Keno</h1>
         </div>
-        <div class="tabs">
-            <a href="/keno">Play Keno</a>
-            <a href="/instructions">Instructions</a>
-        </div>
-        <div class="button-container" id="buttonContainer">
-            <!-- populated through script -->
-        </div>
-        <div class="bottom-container">
-            <div class ="num_spots_selected" id="numSpotsSelected">
-                <!-- populated through script-->
-                0 Spots Selected
+        <div class="main-container">
+
+            <div class="left-container">
+
+                <div class="tabs">
+                    <a href="/keno">Play Keno</a>
+                    <a href="/instructions">Instructions</a>
+                </div>
+                <div class="button-container" id="buttonContainer">
+                    <!-- populated through script -->
+                </div>
+                <div class="bottom-container">
+                    <div class ="num_spots_selected" id="numSpotsSelected">
+                        <!-- populated through script-->
+                        0 Spots Selected
+                    </div>
+                    <div class ="enter_ticket_button">
+                        <button>Enter Ticket</button>
+                    </div>
+                </div>
             </div>
-            <div class ="enter_ticket_button">
-                <button>Enter Ticket</button>
+            <div class="right-container">
+                <div class="button-container" id="hotButtonContainer">
+                    <!-- populated through script -->
+                </div>
             </div>
+
         </div>
+
 
         <script>
             const buttonContainer = document.getElementById('buttonContainer');
@@ -144,6 +175,13 @@
                 };
                 console.log(numSpotsSelected);
                 buttonContainer.appendChild(button);
+            }
+
+            for (let i = 1; i <= 4; i++){
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.className = 'keno-button';
+                hotButtonContainer.appendChild(button);
             }
         </script>
 
