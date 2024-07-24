@@ -10,13 +10,43 @@
                 flex-direction: column;
                 margin: 0px;
             }
+            .logo-container {
+                background-color: darkorange;
+                display: flex;
+                flex-grow: 1;
+                max-width: 550px;
+                width: 100%;
+                justify-content: center;
+                padding: 0px 20px 0px 20px;
+                border-radius: 10px 10px 0 0;
+                margin-top: 24px;
+                margin-bottom: 10px;
+
+            }
+            .tabs {
+                background-color: rgb(255, 255, 255);
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+            .tabs a{
+                background-color: darkorange;
+                padding: 10px 20px 10px 20px;
+                border-radius: 0 10px 0 0px;
+                text-decoration: none;
+                margin-right: 5px;
+                display: flex;
+                width: 250px;
+                justify-content: center;
+            }
             .button-container {
                 background-color: darkorange;
                 display: grid;
                 grid-template-columns: repeat(10, auto);
-                max-width: 510px;
+                max-width: 550px;
+                width: 100%;
                 gap: 5px;
-                padding: 10px;
+                padding: 20px;
+                margin-top: 5px;
             }
             .keno-button {
                 background-color: rgb(219, 219, 219);
@@ -33,7 +63,9 @@
         </style>
     </head>
     <body>
-        <h1>Keno</h1>
+        <div class="logo-container">
+            <h1>Keno</h1>
+        </div>
         <div>
             <div class="tabs">
                 <a href="/keno">Play Keno</a>
