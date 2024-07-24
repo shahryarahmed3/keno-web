@@ -4,9 +4,31 @@
     <head>
         <title>Keno</title>
         <style>
+            body{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin: 0px;
+            }
             .button-container {
+                background-color: darkorange;
                 display: grid;
                 grid-template-columns: repeat(10, auto);
+                max-width: 510px;
+                gap: 5px;
+                padding: 10px;
+            }
+            .keno-button {
+                background-color: rgb(219, 219, 219);
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+                display: inline-block;
+                border-width: 0px;
+            }
+            .keno-button.selected{
+                background-color: yellow;
+                border-radius: 50%;
             }
         </style>
     </head>
@@ -25,6 +47,9 @@
             <!-- populated through script-->
              0 Spots Selected
         </div>
+        <div class ="enter_ticket_button">
+            <button>Enter Ticket</button>
+        </div>
         <script>
             const buttonContainer = document.getElementById('buttonContainer');
             const numSpotsSelected = document.getElementById('numSpotsSelected');
@@ -38,12 +63,12 @@
                 button.textContent = i;
                 button.className = 'keno-button';
                 button.onclick = function () {
-                    alert("You clicked number " + i);
+                    // alert("You clicked number " + i);
                     if (selectedNumbers.includes(i)) {
                         selectedNumbers = selectedNumbers.filter(num => num !== i);
                         spots--;
                         button.classList.remove('selected');
-                    } else {
+                    } else if (!selectedNumbers.includes(i) && selectedNumbers.length < 10) {
                         selectedNumbers.push(i);
                         spots++;
                         button.classList.add('selected');
