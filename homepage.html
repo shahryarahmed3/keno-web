@@ -3,8 +3,46 @@
 <html>
     <head>
         <title>Keno</title>
+        <style>
+            .button-container {
+                display: grid;
+                grid-template-columns: repeat(10, auto);
+            }
+        </style>
     </head>
     <body>
-        
+        <h1>Keno</h1>
+        <div>
+            <div class="tabs">
+                <a href="/keno">Play Keno</a>
+                <a href="/instructions">Instructions</a>
+            </div>
+        </div>
+        <div class="button-container" id="buttonContainer">
+            <!-- populated through script -->
+        </div>
+        <div class ="num_spots_selected" id="numSpotsSelected">
+            <!-- populated through script-->
+        </div>
+        <script>
+            const buttonContainer = document.getElementById('buttonContainer');
+            
+            for (let i = 1; i <= 80; i++){
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.className = 'keno-button';
+                button.onclick = function () {
+                    alert("You clicked number " + i);
+                };
+                buttonContainer.appendChild(button);
+            }
+
+            const numSpotsSelected = document.getElementById('numSpotsSelected');
+
+            let spots = 0;
+            numSpotsSelected.textContent = `${ spots } Spots Selected`;
+
+        </script>
+
     </body>
 </html>
