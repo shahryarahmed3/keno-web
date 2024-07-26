@@ -68,6 +68,13 @@
                 background-color: rgb(255, 89, 0);
                 
             }
+            .button-header {
+                background: linear-gradient(90deg, rgba(241,131,34,1) 0%, rgba(241,90,34,1) 50%, rgba(241,131,34,1) 100%);
+                max-width: 550px;
+                width: 100%;
+                padding: 20px;
+                margin-top: 5px;
+            }
             .button-container {
                 background: linear-gradient(90deg, rgba(241,131,34,1) 0%, rgba(241,90,34,1) 50%, rgba(241,131,34,1) 100%);
 
@@ -77,7 +84,7 @@
                 width: 100%;
                 gap: 5px;
                 padding: 20px;
-                margin-top: 5px;
+                margin-top: 0px;
             }
             .hot-button-container {
                 background: white;
@@ -136,6 +143,13 @@
                 background: radial-gradient(circle at 100px 100px, rgb(63, 63, 63), #ffee00);
 
             }
+            .keno-button.matched {
+                background: radial-gradient(circle at 100px 100px, #b3b3b3, #00ff08);
+            }
+
+            .keno-button.random {
+                background: radial-gradient(circle at 100px 100px, #b3b3b3, #1e00ff);
+            }
             
             .keno-button:hover{
                 background: radial-gradient(circle at 100px 100px, rgb(209, 209, 209), #de1300);
@@ -169,6 +183,9 @@
                     <a href="/keno">Play Keno</a>
                     <a href="/instructions">Instructions</a>
                 </div>
+                <div class="button-header">
+                    Select your spots!
+                </div>
                 <div class="button-container" id="buttonContainer">
                     <!-- populated through script -->
                 </div>
@@ -178,7 +195,7 @@
                         0 Spots Selected
                     </div>
                     <div class ="enter_ticket_button">
-                        <button>Enter Ticket</button>
+                        <button onClick = "compareNumbers()">Enter Ticket</button>
                     </div>
                 </div>
             </div>
@@ -229,13 +246,37 @@
                 buttonContainer.appendChild(button);
             }
 
+            let random_numbers = [];
+
+            // random number generator
+            for (let i = 1; i <= 10; i++){
+                num = Math.floor(Math.random() * 80) + 1;
+                random_numbers.push(num);
+            }
+
+            function compareNumbers() {
+                const buttons = document.querySelectorAll('.keno-button');
+                buttons.forEach(button => {
+                    const num = parseInt(button.textContent, 10);
+                    if (random_numbers.includes(num)) {
+                        if (button.classList.contains('selected')) {
+                            button.classList.add('matched');
+                        } else {
+                            button.classList.add('random');
+                        }
+                    }
+                });
+            }
+
+
+            // hot buttons
             for (let i = 1; i <= 4; i++){
                 const button = document.createElement('button');
                 button.textContent = i;
                 button.className = 'keno-button';
                 hotButtonContainer.appendChild(button);
             }
-
+            // cold buttons
             for (let i = 1; i <= 4; i++){
                 const button = document.createElement('button');
                 button.textContent = i;
