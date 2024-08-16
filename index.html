@@ -278,6 +278,16 @@
                 bottom: 7%;
             }
 
+            @keyframes flash {
+                0% { opacity: 1; }
+                50% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            .flashing-text {
+                animation: flash 1s infinite;
+            }
+
  
         </style>
     </head>
@@ -406,6 +416,7 @@
                 const button_header = document.querySelector('.button-header');
 
                 button_header.textContent = "Drawing in progress...";
+                button_header.classList.add('flashing-text');
 
 
                 random_numbers.forEach((num, index) => {
