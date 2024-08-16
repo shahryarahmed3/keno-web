@@ -17,13 +17,14 @@
             }
 
             .right-container {
-                margin-left: 34px;
+                margin-left: 20px;
                 display: flex; 
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                background-color: #ff0000;
+                /* background-color: #ff0000; */
                 padding: 20px;
+                width: 330px;
             }
             .left-container {
                 margin-right: 34px;
@@ -76,6 +77,8 @@
                 width: 100%;
                 padding: 20px;
                 margin-top: 5px;
+                display: flex;
+                justify-content: center;
             }
             .button-container {
                 background: linear-gradient(90deg, rgba(241,131,34,1) 0%, rgba(241,90,34,1) 50%, rgba(241,131,34,1) 100%);
@@ -276,6 +279,12 @@
             function compareNumbers() {
                 const buttons = document.querySelectorAll('.keno-button');
 
+                // fetching button container top label
+                const button_header = document.querySelector('.button-header');
+
+                button_header.textContent = "Drawing in progress...";
+
+
                 random_numbers.forEach((num, index) => {
                     setTimeout(() => {
                         const button = document.createElement('button');
@@ -301,6 +310,9 @@
                     button.className = 'keno-button';
                     hotButtonContainer.appendChild(button);
                 });
+
+
+
             }
 
 
