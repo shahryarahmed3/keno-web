@@ -223,6 +223,17 @@
             const buttonContainer = document.getElementById('buttonContainer');
             const numSpotsSelected = document.getElementById('numSpotsSelected');
 
+            // this function fetches the button by number in the buttonContainer
+            function getButtonByNumber(number) {
+                return Array.from(buttonContainer.getElementsByTagName('button'))
+                    .find(button => button.textContent.trim() === String(number));
+            }
+            
+            // this function returns true if a random number matches user selection
+            function checkMatch(number){
+                return selectedNumbers.includes(number);
+            }
+
 
             let selectedNumbers = [];
             let spots = 0;
@@ -264,21 +275,24 @@
 
             function compareNumbers() {
                 const buttons = document.querySelectorAll('.keno-button');
-                buttons.forEach(button => {
-                    const num = parseInt(button.textContent, 10);
-                    if (random_numbers.includes(num)) {
-                        if (button.classList.contains('selected')) {
-                            button.classList.add('matched');
-                        } else {
-                            button.classList.add('random');
+
+                random_numbers.forEach((num, index) => {
+                    setTimeout(() => {
+                        const button = document.createElement('button');
+                        button.textContent = num;
+                        button.className = 'keno-button';
+                        coldButtonContainer.appendChild(button);
+
+                        // simultaneously updating the buttonsContainer 
+                        const random_button = getButtonByNumber(num);
+                        if (random_button){
+                            random_button.classList.add('random');
                         }
-                    }
-                });
-                random_numbers.forEach(num => {
-                    const button = document.createElement('button');
-                    button.textContent = num;
-                    button.className = 'keno-button';
-                    coldButtonContainer.appendChild(button);
+                        if (checkMatch(num)) {
+                            random_button.classList.remove('random');
+                            random_button.classList.add('matched');
+                        }
+                    }, index * 1000);
                 });
 
                 selectedNumbers.forEach(num => {
