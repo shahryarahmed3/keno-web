@@ -151,19 +151,23 @@
             .keno-button.selected{
                 /* background-color: yellow; */
                 border-radius: 50%;
-                background: radial-gradient(circle at 100px 100px, rgb(63, 63, 63), #ffee00);
+                background: radial-gradient(circle at 100px 100px, rgb(63, 63, 63), #898989);
+                font-weight: bolder;
 
             }
             .keno-button.matched {
-                background: radial-gradient(circle at 100px 100px, #b3b3b3, #00ff08);
+                background: radial-gradient(circle at 100px 100px, #b3b3b3, #f7ef00);
             }
 
             .keno-button.random {
                 background: radial-gradient(circle at 100px 100px, #b3b3b3, #1e00ff);
+                font-weight: bold;
+                color: white;
             }
             
             .keno-button:hover{
-                background: radial-gradient(circle at 100px 100px, rgb(209, 209, 209), #de1300);
+                background: radial-gradient(circle at 100px 100px, rgb(209, 209, 209), #000000);
+                color:white;
 
             }
 
@@ -410,8 +414,6 @@
                 } while (random_numbers.includes(num));
                 random_numbers.push(num);
             }
-
-
 
 
             function compareNumbers() {
