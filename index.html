@@ -496,6 +496,11 @@
             function hideOverlay() {
                 const overlay = document.getElementById('overlay');
                 overlay.style.display = 'none';
+
+                const buttons = document.querySelectorAll('#buttonContainer .keno-button');
+                buttons.forEach(button => {
+                    button.disabled = true;
+                });
             }
 
             // this function adds results content
@@ -580,7 +585,8 @@
                         // Show the overlay after all results are displayed
                         if (index === random_numbers.length - 1) {
                             showOverlay();
-                            button_header.textContent = "Drawing Results...";
+                            button_header.innerHTML = "<p>Drawing Results...</p>";
+                            button_header.innerHTML += "<p>Game Over!</p>";
                             button_header.classList.remove('flashing-text');
                         }
                         changeContent(match_count);
