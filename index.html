@@ -486,10 +486,16 @@
                 return selectedNumbers.includes(number);
             }
 
-            // this function shows displays results overlay
+            // this function displays results
             function showOverlay() {
                 const overlay = document.getElementById('overlay');
                 overlay.style.display = 'flex'; 
+            }
+
+            // this function hides display results
+            function hideOverlay() {
+                const overlay = document.getElementById('overlay');
+                overlay.style.display = 'none';
             }
 
             // this function adds results content
