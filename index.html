@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Keno</title>
+        <title>Keno: Lottery Game Simulator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap">
@@ -334,6 +334,8 @@
                 padding: 20px;
                 border-radius: 10px;
                 text-align: center;
+                max-width: 325px;
+                width: 100%;
             }
 
             .overlay-content h2 {
@@ -375,7 +377,7 @@
             <div class="left-container">
 
                 <div class="tabs">
-                    <a href="/keno">Play Keno</a>
+                    <a href="./index.html">Play Keno</a>
                     <a href="/instructions">Instructions</a>
                 </div>
                 <div class="button-header">
@@ -385,7 +387,11 @@
                     <!-- populated through script -->
                     <div id="overlay" class="overlay">
                         <div class="overlay-content">
-                            <h2>Drawing Results</h2>
+                            <h2 class="results-title" id="resultsTitle">Drawing Results</h2>
+                            <h3>10 Spot Game</h3>
+                            <h5>Numbers Matched: ##</h5>
+                            <p>Ticket Winnings</p>
+                            <p>$0</p>
                             <div id="drawResultsContent"></div>
                             <button onclick="hideOverlay()">Close</button>
                         </div>
@@ -472,10 +478,15 @@
                 return selectedNumbers.includes(number);
             }
 
-            // this function shows drawing results 
+            // this function shows displays results overlay
             function showOverlay() {
                 const overlay = document.getElementById('overlay');
                 overlay.style.display = 'flex'; 
+            }
+
+            // this function adds results content
+            function changeContent(){
+                document.getElementById("resultsTitle").innerHTML = `Drawing #${Math.floor(Math.random() * 9999) + 1}`;
             }
 
 
@@ -563,6 +574,7 @@
                     hotButtonContainer.appendChild(button);
                 });
 
+                changeContent();
 
             }
 
