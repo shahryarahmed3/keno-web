@@ -384,7 +384,7 @@
 
                 <div class="tabs">
                     <a href="./index.html">Play Keno</a>
-                    <a href="/instructions">Instructions</a>
+                    <a href="./index.html">Instructions</a>
                 </div>
                 <div class="button-header">
                     Select your spots!
@@ -397,8 +397,8 @@
                             <h3>10 Spot Game</h3>
                             <h4 id="numbersMatched">Numbers Matched: ##</h4>
                             <div class="winnings-container">
-                                <p style=font-weight:bold;>Ticket Winnings:</p>
-                                <p>$0</p>
+                                <p id="ticketWinnings" style=font-weight:bold;>Ticket Winnings:</p>
+                                <p id="tempZero" >$0</p>
                             </div>
                             <div id="drawResultsContent"></div>
                             <button onclick="hideOverlay()">Close</button>
@@ -508,6 +508,8 @@
                 document.getElementById("resultsTitle").innerHTML = `Drawing #${Math.floor(Math.random() * 9999) + 1}`;
                 document.getElementById("numbersMatched").innerHTML = `Numbers Matched: ${match_count}`;
             }
+
+            // this function displays instructions
 
 
             let selectedNumbers = [];
