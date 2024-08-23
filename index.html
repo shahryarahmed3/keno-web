@@ -384,7 +384,7 @@
 
                 <div class="tabs">
                     <a href="./index.html">Play Keno</a>
-                    <a href="./index.html">Instructions</a>
+                    <a href="#" onclick="showInstructions()">Instructions</a>
                 </div>
                 <div class="button-header">
                     Select your spots!
@@ -402,6 +402,15 @@
                             </div>
                             <div id="drawResultsContent"></div>
                             <button onclick="hideOverlay()">Close</button>
+                        </div>
+                    </div>
+                    <div id="instructions-overlay" class="overlay">
+                        <div class="overlay-content">
+                            <h2> Instructions </h2>
+                            <p> <span style="font-weight: bold;">Select Your Numbers:</span> Choose exactly 10 numbers (called "spots") from the grid of numbers ranging from 1 to 80.</p>
+                            <p> <span style="font-weight: bold;">Place Your Bet:</span> Your bet is automatically set at $1. </p>
+                            <p> <span style="font-weight: bold;">Watch the Draw:</span> Click "Enter Ticket". 10 numbers will be randomly drawn. If your chosen numbers match the drawn numbers, check the prize chart to see how much you've won! </p>
+                            <button onclick="hideInstructions()">Hide Instructions</button>
                         </div>
                     </div>
                 </div>
@@ -490,6 +499,17 @@
             function showOverlay() {
                 const overlay = document.getElementById('overlay');
                 overlay.style.display = 'flex'; 
+            }
+
+            // this  function displays instruction
+            function showInstructions() {
+                const overlay = document.getElementById("instructions-overlay");
+                overlay.style.display = 'flex';
+            }
+            
+            function hideInstructions() {
+                const overlay = document.getElementById('instructions-overlay');
+                overlay.style.display = 'none';
             }
 
             // this function hides display results
